@@ -13,17 +13,17 @@
 - Generally, the string should not contain anything weird.
 ### 2. Considered functions
 ### These are the considered functions so far:
-- [ ] `null` - (no function)
-- [ ] `srt` - (square root)
-- [ ] `crt` - (cube root)
-- [ ] `sin`
-- [ ] `cos`
-- [ ] `tan`
-- [ ] `sec`
-- [ ] `csc`
-- [ ] `cot`
-- [ ] `lan` - (ln)
-- [ ] `log`
+- [x] `null` - (no function)
+- [x] `srt` - (square root)
+- [x] `crt` - (cube root)
+- [x] `sin`
+- [x] `cos`
+- [x] `tan`
+- [x] `sec`
+- [x] `csc`
+- [x] `cot`
+- [x] `lan` - (ln)
+- [x] `log`
 - [ ] `prm` - (permutation)
 - [ ] `cmb` - (combination)
 - [ ] `asi` - (arcsin)
