@@ -32,4 +32,4 @@
 - [ ] `ase` - (arcsec)
 - [ ] `acc` - (arccsc)
 - [ ] `act` - (arccot)
-=> edit and add more to the list
+> edit and add more to the list
