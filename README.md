@@ -11,6 +11,7 @@
 - Subscripts are represented by '_' and superscripts by '^'.
 - Absolute value is represented by abs() not |f|.
 - Generally, the string should not contain anything weird.
+- The parser can only handle syntax errors (mathematical errors are handled by the evaluator and sent back as signals to the parser).
 ### 2. Considered functions
 ### These are the considered functions so far:
 - [x] `null` - (no function)
