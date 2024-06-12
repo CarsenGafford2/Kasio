@@ -43,6 +43,10 @@ public class Parser{
     private int[] contentArray = new int[4];
     private ArrayList<Integer> funcArray = new ArrayList<>();
     private ArrayList<Integer> funcIndices = new ArrayList<>();
+    ArrayList<Integer> operators = new ArrayList<>();
+    ArrayList<Integer> operands = new ArrayList<>();
+    ArrayList<Character> operatorNames = new ArrayList<>();
+    ArrayList<StringBuffer> operandNames = new ArrayList<>();
     void details(){
         System.out.println(" expression: " + expression);
         System.out.println(" Content:");
@@ -147,7 +151,7 @@ public class Parser{
         }
         return indices;
     }
-    ArrayList<Object> basicParse(String expression) throws Exception{
+    void basicParse(String expression) throws Exception{
         ArrayList<Integer> operators = new ArrayList<>();
         ArrayList<Integer> operands = new ArrayList<>();
         ArrayList<Character> operatorNames = new ArrayList<>();
@@ -263,25 +267,13 @@ public class Parser{
                 System.out.println(" " + (i + 1) + ". " + operandNames.get(i) + " : " + operands.get(i));
             }
         // */
-        ArrayList<Object> fullDetails = new ArrayList<>();
-        fullDetails.add(operators);
-        fullDetails.add(operands);
-        fullDetails.add(operatorNames);
-        fullDetails.add(operandNames);
-        return fullDetails;
+        this.operators = operators;
+        this.operands = operands;
+        this.operandNames = operandNames;
+        this.operatorNames = operatorNames;
     }
-    void takeParsed(String expression){
-        ArrayList<Object> parsed = new ArrayList<>();
-        try{
-            parsed = basicParse(expression);
-        }
-        catch(Exception ex){
-            return;
-        }
-        ArrayList<Integer> operators = (ArrayList<Integer>)parsed.get(0);
-        ArrayList<Integer> operands = (ArrayList<Integer>)parsed.get(1);
-        ArrayList<StringBuffer> operatorNames = (ArrayList<StringBuffer>)parsed.get(2);
-        ArrayList<StringBuffer> operandNames = (ArrayList<StringBuffer>)parsed.get(3);
+    void basicParse() throws Exception{
+        basicParse(this.expression);
     }
     Parser(String expression){
         this.expression = expression;
@@ -292,15 +284,9 @@ public class Parser{
     Parser(){
         this("");
     }
-}
-class Output<T>{
     public static void main(String args[]) throws Exception{
         Parser parser = new Parser("sin(cos(tan(4*6*(sec(8)))))");
         parser.details();
-        ArrayList<Object> parsed = parser.basicParse("-3.678*4+3.49/10-7^9");
-        ArrayList<Integer> operators = (ArrayList<Integer>)parsed.get(0);
-        ArrayList<Integer> operands = (ArrayList<Integer>)parsed.get(1);
-        ArrayList<StringBuffer> operatorNames = (ArrayList<StringBuffer>)parsed.get(2);
-        ArrayList<StringBuffer> operandNames = (ArrayList<StringBuffer>)parsed.get(3);
+        parser.basicParse("-3.678*4+3.49/10-7^9");
     }
 }
