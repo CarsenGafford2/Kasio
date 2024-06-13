@@ -19,13 +19,14 @@ public class App implements ActionListener {
     final int basicPanelHeight = contentHeight * 55 / 100; // 55 percent of the content height
 
     App() {
-        frame = new JFrame("The Calc");
+        frame = new JFrame("Calculator");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setLayout(null);
         frame.getContentPane().setPreferredSize(new Dimension(contentWidth, contentHeight));
         frame.setAlwaysOnTop(true);
         frame.setUndecorated(true);
+        frame.setIconImage(new ImageIcon("icon/icon.png").getImage());
         
         JMenuBar menuBar = new JMenuBar();
         menuBar.setBackground(Colors.PRIMARY);

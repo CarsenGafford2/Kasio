@@ -24,7 +24,8 @@ public class EqualsButton extends JButton {
                                     .replace("atan", "atn")
                                     .replace("ln", "lan")
                                     .replace("√", "srt")
-                                    .replace("×", "*");
+                                    .replace("×", "*")
+                                    .replace("∧", "^");
                 
                 // System.out.println(modStr);
                 try {
