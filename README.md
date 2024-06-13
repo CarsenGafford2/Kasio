@@ -1,3 +1,11 @@
+# How to run?
+
+## Run the following command from the project's root directory'
+`javac app/App.java`
+## Then,
+`java app/App`
+
+
 # Standard/Scientific Calculator with Java
 ## 1. app
 This package contains everything related to the GUI. Uses the parser package to evaluate expressions.
