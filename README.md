@@ -25,12 +25,10 @@
 - [x] `cot`
 - [x] `lan` - (ln)
 - [x] `log`
-- [ ] `prm` - (permutation)
-- [ ] `cmb` - (combination)
-- [ ] `asi` - (arcsin)
-- [ ] `acs` - (arccos)
-- [ ] `atn` - (arctan)
-- [ ] `ase` - (arcsec)
-- [ ] `acc` - (arccsc)
-- [ ] `act` - (arccot)
+- [x] `asi` - (arcsin)
+- [x] `acs` - (arccos)
+- [x] `atn` - (arctan)
+- [x] `ase` - (arcsec)
+- [x] `acc` - (arccsc)
+- [x] `act` - (arccot)
 > edit and add more to the list
