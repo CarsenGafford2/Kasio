@@ -1,7 +1,10 @@
 ## Standard/Scientific Calculator with Java
 
-![screenshot1](https://raw.githubusercontent.com/hethon/thecalc/84218e9555e958968d2158f4d6e36283691ad75d/screenshots/basicMode.png?token=GHSAT0AAAAAACTAPU7ULQIRATFZOTNIWP7MZWZL32A)
-![screenshot2](https://raw.githubusercontent.com/hethon/thecalc/master/screenshots/scientificMod.png?token=GHSAT0AAAAAACTAPU7VD2PZDCGWNJLRSPHGZWZMBIA)
+# Basic Mode
+<img src="https://raw.githubusercontent.com/hethon/thecalc/84218e9555e958968d2158f4d6e36283691ad75d/screenshots/basicMode.png?token=GHSAT0AAAAAACTAPU7ULQIRATFZOTNIWP7MZWZL32A" alt="image basic mode" width="200"/>
+
+# Scientific Mode
+<img src="https://raw.githubusercontent.com/hethon/thecalc/84218e9555e958968d2158f4d6e36283691ad75d/screenshots/basicMode.png?token=GHSAT0AAAAAACTAPU7ULQIRATFZOTNIWP7MZWZL32A" alt="image basic mode" width="200"/>
 
 # How to run?
 
