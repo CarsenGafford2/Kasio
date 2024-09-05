@@ -2,11 +2,11 @@
 
 | ![Basic Mode](https://raw.githubusercontent.com/hethon/thecalc/master/screenshots/basicMode.png?token=GHSAT0AAAAAACTAPU7VGDW33DUC4C4AI3SCZWZMTOA) | 
 |:--:| 
-| *Space* |
+| *Basic Mode* |
 
 | ![Scientific Mode](https://raw.githubusercontent.com/hethon/thecalc/master/screenshots/scientificMod.png?token=GHSAT0AAAAAACTAPU7VVJH44HCK3B4SLHVQZWZMSDQ) | 
 |:--:| 
-| *Space* |
+| *Scientific Mode* |
 
 ## How to run?
 
