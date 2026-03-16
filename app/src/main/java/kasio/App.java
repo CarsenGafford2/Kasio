@@ -19,6 +19,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
 
 import kasio.ui.AllClearButton;
 import kasio.ui.Colors;
@@ -187,7 +188,7 @@ public class App implements ActionListener {
     }
 
     public static void main(String[] args) {
-        App app = new App();
+        SwingUtilities.invokeLater(() -> new App());
     }
 
     @Override
