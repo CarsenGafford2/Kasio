@@ -47,7 +47,10 @@ public class CalculatorModel {
         if (this.expressionBuilder.isEmpty()) return;
         if (this.inErrorState) return;
 
-        Expression e = new Expression(this.expressionBuilder);
+        Expression e = new Expression(
+            this.expressionBuilder
+            .replace("∧", "^")
+        );
         
         double result = e.calculate();
 
