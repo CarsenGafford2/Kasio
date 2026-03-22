@@ -7,7 +7,7 @@ import java.awt.GridLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
 
@@ -45,51 +45,34 @@ public class CalculatorView {
     final int basicPanelHeight = contentHeight * 55 / 100; // 55 percent of the content height
 
     private  final JTextField textField;
-    private final List<AppendButton> appendButtons = Arrays.asList(
-        new AppendButton("x³", "∧3"),
-        new AppendButton("asin"),
-        new AppendButton("acos"),
-        new AppendButton("atan"),
-        new AppendButton("!"),
-        new AppendButton("√"),
-        new AppendButton("log"),
-        new AppendButton("sin"),
-        new AppendButton("cos"),
-        new AppendButton("tan"),
-        new AppendButton("tan"),
-        new AppendButton("abs"),
-        new AppendButton("ln"),
-        new AppendButton("("),
-        new AppendButton(")"),
-        new AppendButton("x²", "∧2"),
-        new AppendButton("7"),
-        new AppendButton("8"),
-        new AppendButton("9"),
-        new AppendButton("4"),
-        new AppendButton("5"),
-        new AppendButton("6"),
-        new AppendButton("×"),
-        new AppendButton("/"),
-        new AppendButton("1"),
-        new AppendButton("2"),
-        new AppendButton("3"),
-        new AppendButton("+"),
-        new AppendButton("-"),
-        new AppendButton("0"),
-        new AppendButton("."),
-        new AppendButton("π"),
-        new AppendButton("∧")
-    );
-
-    private final List<WrapButton> wrapButtons = Arrays.asList(
-        new WrapButton("1/x", "1/"),
-        new WrapButton("-(x)", "-"),
-        new WrapButton("()")
-    );
+    private final List<AppendButton> appendButtons = new ArrayList<>();
+    private final List<WrapButton> wrapButtons = new ArrayList<>();
     private final AllClearButton allClearButton = new AllClearButton();
     private final DelButton delButton = new DelButton();
     private final EqualsButton equalsButton = new EqualsButton();
     private final ExitButton exisButton = new ExitButton();
+
+    private void addAppendBtn(JPanel panel, String text) {
+        addAppendBtn(panel, text, text);
+    }
+
+    private void addAppendBtn(JPanel panel, String displayText, String evalText) {
+        AppendButton btn = new AppendButton(displayText, evalText);
+        appendButtons.add(btn); // Save it so Controller can attach listeners later
+        panel.add(btn);         // Add it to the UI
+    }
+
+    private void addWrapBtn(JPanel panel, String text, String wrapPrefix) {
+        WrapButton btn = new WrapButton(text, wrapPrefix);
+        wrapButtons.add(btn);
+        panel.add(btn);
+    }
+
+    private void addWrapBtn(JPanel panel, String text) {
+        WrapButton btn = new WrapButton(text);
+        wrapButtons.add(btn);
+        panel.add(btn);
+    }
 
 
     public CalculatorView() {
@@ -190,27 +173,27 @@ public class CalculatorView {
         scientificPanel.setLayout(new GridLayout(3, 6, 10, 10));
         scientificPanel.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Colors.SECONDARY));
 
-        scientificPanel.add(appendButtons.get(0));
-        scientificPanel.add(appendButtons.get(1));
-        scientificPanel.add(appendButtons.get(2));
-        scientificPanel.add(appendButtons.get(3));
-        scientificPanel.add(appendButtons.get(4));
+        addAppendBtn(scientificPanel, "x³", "∧3");
+        addAppendBtn(scientificPanel, "asin");
+        addAppendBtn(scientificPanel, "acos");
+        addAppendBtn(scientificPanel, "atan");
+        addAppendBtn(scientificPanel, "!");
         scientificPanel.add(exisButton);
 
-        scientificPanel.add(wrapButtons.get(0));
-        scientificPanel.add(appendButtons.get(5));
-        scientificPanel.add(appendButtons.get(6));
-        scientificPanel.add(appendButtons.get(7));
-        scientificPanel.add(appendButtons.get(8));
-        scientificPanel.add(appendButtons.get(9));
+        addWrapBtn(scientificPanel, "1/x", "1/");
+        addAppendBtn(scientificPanel, "√");
+        addAppendBtn(scientificPanel, "log");
+        addAppendBtn(scientificPanel, "sin");
+        addAppendBtn(scientificPanel, "cos");
+        addAppendBtn(scientificPanel, "tan");
 
-        scientificPanel.add(wrapButtons.get(1));
-        scientificPanel.add(appendButtons.get(10));
-        scientificPanel.add(wrapButtons.get(2));
-        scientificPanel.add(appendButtons.get(11));
-        scientificPanel.add(appendButtons.get(12));
-        scientificPanel.add(appendButtons.get(13));
-        scientificPanel.add(appendButtons.get(14));
+        addWrapBtn(scientificPanel, "-(X)", "-");
+        addWrapBtn(scientificPanel, "()");
+        addAppendBtn(scientificPanel, "tan");
+        addAppendBtn(scientificPanel, "abs");
+        addAppendBtn(scientificPanel, "ln");
+        addAppendBtn(scientificPanel, "(");
+        addAppendBtn(scientificPanel, ")");
 
         basicPanel = new JPanel();
         basicPanel.setBounds(0, textFieldHeight + scientificPanelHeight,
@@ -219,29 +202,29 @@ public class CalculatorView {
         basicPanel.setLayout(new GridLayout(4, 5, 10, 10));
         basicPanel.setBorder(BorderFactory.createMatteBorder(0, 10, 10, 10, Colors.SECONDARY));
 
-        basicPanel.add(appendButtons.get(15));
-        basicPanel.add(appendButtons.get(16));
-        basicPanel.add(appendButtons.get(17));
+        addAppendBtn(basicPanel, "x²", "∧2");
+        addAppendBtn(basicPanel, "7");
+        addAppendBtn(basicPanel, "8");
         basicPanel.add(delButton);
         basicPanel.add(allClearButton);
 
-        basicPanel.add(appendButtons.get(18));
-        basicPanel.add(appendButtons.get(19));
-        basicPanel.add(appendButtons.get(20));
-        basicPanel.add(appendButtons.get(21));
-        basicPanel.add(appendButtons.get(22));
+        addAppendBtn(basicPanel, "9");
+        addAppendBtn(basicPanel, "4");
+        addAppendBtn(basicPanel, "5");
+        addAppendBtn(basicPanel, "6");
+        addAppendBtn(basicPanel, "×");
 
-        basicPanel.add(appendButtons.get(23));
-        basicPanel.add(appendButtons.get(24));
-        basicPanel.add(appendButtons.get(25));
-        basicPanel.add(appendButtons.get(26));
-        basicPanel.add(appendButtons.get(27));
+        addAppendBtn(basicPanel, "÷");
+        addAppendBtn(basicPanel, "1");
+        addAppendBtn(basicPanel, "2");
+        addAppendBtn(basicPanel, "3");
+        addAppendBtn(basicPanel, "+");
 
-        basicPanel.add(appendButtons.get(28));
-        basicPanel.add(appendButtons.get(29));
-        basicPanel.add(appendButtons.get(30));
-        basicPanel.add(equalsButton);
-        basicPanel.add(appendButtons.get(31));
+        addAppendBtn(basicPanel, "-");
+        addAppendBtn(basicPanel, "0");
+        addAppendBtn(basicPanel, ".");
+        addAppendBtn(basicPanel, "π");
+        addAppendBtn(basicPanel, "∧");
 
         frame.setJMenuBar(menuBar);
         frame.add(textField);
