@@ -5,9 +5,11 @@ import org.mariuszgromada.math.mxparser.Expression;
 public class CalculatorModel {
     private boolean inErrorState = false;
     private String expressionBuilder;
+    private String expressionResult;
     
     public CalculatorModel() {
         this.expressionBuilder = "";
+        this.expressionResult = "";
     }
 
     public void appendInput(String value) {
@@ -43,6 +45,10 @@ public class CalculatorModel {
         return this.expressionBuilder;
     }
 
+    public String getlastExpressionResult() {
+        return this.expressionResult;
+    }
+
     public void evaluate() {
         if (this.expressionBuilder.isEmpty()) return;
         if (this.inErrorState) return;
@@ -66,6 +72,7 @@ public class CalculatorModel {
             }
             
             this.expressionBuilder = resultStr;
+            this.expressionResult = resultStr;
         }
     }
 }

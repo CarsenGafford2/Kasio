@@ -25,6 +25,7 @@ import javax.swing.KeyStroke;
 import kasio.view.components.Colors;
 import kasio.view.components.Fonts;
 import kasio.view.components.buttons.AllClearButton;
+import kasio.view.components.buttons.AnsButton;
 import kasio.view.components.buttons.AppendButton;
 import kasio.view.components.buttons.DelButton;
 import kasio.view.components.buttons.EqualsButton;
@@ -49,6 +50,7 @@ public class CalculatorView {
     private final AllClearButton allClearButton = new AllClearButton();
     private final DelButton delButton = new DelButton();
     private final EqualsButton equalsButton = new EqualsButton();
+    private final AnsButton ansButton = new AnsButton();
 
     private void addAppendBtn(JPanel panel, String text) {
         addAppendBtn(panel, text, text);
@@ -213,7 +215,7 @@ public class CalculatorView {
         addAppendBtn(basicPanel, "0");
         addAppendBtn(basicPanel, ".");
         addAppendBtn(basicPanel, "π");
-        addAppendBtn(basicPanel, "EXP", "*10∧");
+        basicPanel.add(ansButton);
         basicPanel.add(equalsButton);
 
         frame.setJMenuBar(menuBar);
@@ -258,6 +260,12 @@ public class CalculatorView {
 
     public void addEqualsButtonListener(Runnable action) {
         equalsButton.addActionListener(e -> {
+            action.run();
+        });
+    }
+
+    public void addAnsButtonListener(Runnable action) {
+        ansButton.addActionListener(e -> {
             action.run();
         });
     }

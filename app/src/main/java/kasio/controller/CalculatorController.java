@@ -40,6 +40,11 @@ public class CalculatorController {
             view.setDisplayValue(model.getCurrentExpression());
         });
 
+        view.addAnsButtonListener(() -> {
+            model.appendInput(model.getlastExpressionResult());
+            view.setDisplayValue(model.getCurrentExpression());
+        });
+
         view.addExitButtonListener(() -> {
             model.clear();
             view.setDisplayValue(model.getCurrentExpression());
