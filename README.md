@@ -2,7 +2,7 @@
 
 Kasio is a Java Swing calculator app built for a university assignment, featuring a retro design inspired by classic scientific calculators. 
 
-![Scientific Mod](screenshots/scientificMod.png)
+![Scientific Mod](screenshots/image.png)
 
 Swing wasn’t a deliberate tech choice, it was required by the course, but I used the project to go beyond that constraint and explore better software practices. The true focus of this repository is learning tooling and architecture. 
 
