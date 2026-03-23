@@ -3,8 +3,25 @@ name: Kasio CI Pipeline
 on:
   push:
     branches: [ "master" ]
+    paths:
+      - 'app/**'
+      - 'gradle/**'
+      - 'gradle.properties'
+      - 'build.gradle'
+      - 'gradlew'
+      - 'settings.gradle'
+      - '.github/workflows/ci.yml'
+
   pull_request:
     branches: [ "master" ]
+    paths:
+      - 'app/**'
+      - 'gradle/**'
+      - 'gradle.properties'
+      - 'build.gradle'
+      - 'gradlew'
+      - 'settings.gradle'
+      - '.github/workflows/ci.yml'
 
 jobs:
   build-and-test:
