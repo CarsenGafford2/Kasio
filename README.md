@@ -1,8 +1,10 @@
 # Kasio
 
+[![Build Status](https://img.shields.io/github/actions/workflow/status/hethon/Kasio/ci.yaml?label=build&logo=github)](https://github.com/hethon/Kasio/actions)
+
 Kasio is a Java Swing calculator app built for a university assignment, featuring a retro design inspired by classic scientific calculators. 
 
-![Scientific Mod](screenshots/image.png)
+![Screenshot](screenshots/image.png)
 
 Swing wasn’t a deliberate tech choice, it was required by the course, but I used the project to go beyond that constraint and explore better software practices. The true focus of this repository is learning tooling and architecture. 
 
@@ -11,8 +13,9 @@ During the development process, I learned and implemented:
 * **MVC Architecture:** Completely refactored the codebase to decouple the UI components from the main application logic and eliminate circular dependencies.
 
 I am continuing to use this project as a hands-on way to learn new software engineering concepts. Upcoming goals include:
-* Adding unit tests (JUnit).
-* Setting up CI/CD pipelines.
+- [x] Adding unit tests (JUnit).
+- [x] Setting up CI/CD pipelines.
+- [x] Automatic releases.
 
 ### How to Run
 You don't need Gradle installed globally. Just use the included wrapper:
