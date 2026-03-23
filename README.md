@@ -1,6 +1,8 @@
 # Kasio
 
 [![Build Status](https://img.shields.io/github/actions/workflow/status/hethon/Kasio/ci.yaml?label=build&logo=github)](https://github.com/hethon/Kasio/actions)
+[![Latest Release](https://img.shields.io/github/v/release/hethon/Kasio?label=version&color=blue)](https://github.com/hethon/Kasio/releases)
+
 
 Kasio is a Java Swing calculator app built for a university assignment, featuring a retro design inspired by classic scientific calculators. 
 
