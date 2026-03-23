@@ -41,3 +41,21 @@ tasks.named('test') {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
 }
+
+
+version = '0.0.1'
+
+tasks.register('fatJar', Jar) {
+    archiveBaseName = 'Kasio'
+    archiveClassifier = 'standalone'
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+
+    manifest {
+        attributes 'Main-Class': application.mainClass
+    }
+
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    with jar
+}
