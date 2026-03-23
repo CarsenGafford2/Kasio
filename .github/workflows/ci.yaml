@@ -10,7 +10,7 @@ on:
       - 'build.gradle'
       - 'gradlew'
       - 'settings.gradle'
-      - '.github/workflows/ci.yml'
+      - '.github/workflows/ci.yaml'
 
   pull_request:
     branches: [ "master" ]
@@ -21,7 +21,7 @@ on:
       - 'build.gradle'
       - 'gradlew'
       - 'settings.gradle'
-      - '.github/workflows/ci.yml'
+      - '.github/workflows/ci.yaml'
 
 jobs:
   build-and-test:
