@@ -1,15 +1,16 @@
 package kasio.view.components.buttons;
 
+import java.awt.Font;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import kasio.view.components.Colors;
-import kasio.view.components.Fonts;
 
 public class AllClearButton extends JButton {
-    public AllClearButton() {
+    public AllClearButton(Font font) {
         super("AC");
-        setFont(Fonts.KEYPAD_PRIMARY);
+        setFont(font);
         setFocusable(false);
         setBackground(Colors.RED);
         setForeground(Colors.WHITE);

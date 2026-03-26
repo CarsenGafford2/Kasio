@@ -1,30 +1,31 @@
 package kasio.view.components.buttons;
 
+import java.awt.Font;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import kasio.view.components.Colors;
-import kasio.view.components.Fonts;
 
 
 public final class WrapButton extends JButton {
 
     private final String wrapPrefix;
 
-    public WrapButton(String text, String wrapPrefix) {
+    public WrapButton(String text, String wrapPrefix, Font font) {
         super(text);
         this.wrapPrefix = wrapPrefix;
-        setUp();
+        setUp(font);
     }
 
-    public WrapButton(String name) {
+    public WrapButton(String name, Font font) {
         super(name);
         this.wrapPrefix = "";
-        setUp();
+        setUp(font);
     }
 
-    void setUp() {
-        setFont(Fonts.KEYPAD_SECONDARY);
+    void setUp(Font font) {
+        setFont(font);
         setFocusable(false);
         setBackground(Colors.PRIMARY);
         setForeground(Colors.WHITE);

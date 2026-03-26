@@ -1,15 +1,16 @@
 package kasio.view.components.buttons;
 
+import java.awt.Font;
+
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import kasio.view.components.Colors;
-import kasio.view.components.Fonts;
 
 public class DelButton extends JButton{
-    public DelButton() {
+    public DelButton(Font font) {
         setText("DEL");
-        setFont(Fonts.KEYPAD_PRIMARY);
+        setFont(font);
         setFocusable(false);
         setBackground(Colors.RED);
         setForeground(Colors.WHITE);
