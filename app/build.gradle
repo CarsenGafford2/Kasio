@@ -8,6 +8,7 @@
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'com.diffplug.spotless' version '8.4.0'
 }
 
 repositories {
@@ -46,6 +47,15 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+// formater setup
+spotless {
+    java {
+        googleJavaFormat()
+        trimTrailingWhitespace()
+        endWithNewline()
+        removeUnusedImports()
+    }
+}
 
 version = '0.0.2'
 
