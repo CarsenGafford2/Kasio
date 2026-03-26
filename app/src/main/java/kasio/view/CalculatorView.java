@@ -107,7 +107,7 @@ public class CalculatorView {
         menuBar.add(mode, BorderLayout.WEST);
         
         JButton minimize = new JButton("—");
-        minimize.setFont(Fonts.symbolFont);
+        minimize.setFont(Fonts.KEYPAD_PRIMARY);
         minimize.setForeground(Colors.WHITE);
         minimize.setBorderPainted(false);
         minimize.setFocusable(false);
@@ -115,7 +115,7 @@ public class CalculatorView {
         minimize.addActionListener(e -> {frame.setExtendedState(JFrame.ICONIFIED);});
 
         off_menu = new JButton("✕");
-        off_menu.setFont(Fonts.alphaFont);
+        off_menu.setFont(Fonts.KEYPAD_PRIMARY);
         off_menu.setForeground(Colors.WHITE);
         off_menu.setBorderPainted(false);
         off_menu.setFocusable(false);

@@ -24,11 +24,11 @@ public class AppendButton extends JButton {
         setForeground(Colors.WHITE);
         setBorder(BorderFactory.createLineBorder(Colors.BLACK));
         if (isNumeric(displayText) || ".".equals(displayText)) {
-            this.setFont(Fonts.numFont);
+            this.setFont(Fonts.KEYPAD_PRIMARY);
         } else if (displayText.length() == 1) {
-            this.setFont(Fonts.symbolFont);
+            this.setFont(Fonts.KEYPAD_SECONDARY);
         } else {
-            this.setFont(Fonts.alphaFont);
+            this.setFont(Fonts.KEYPAD_SECONDARY);
         }
     }
 

@@ -9,7 +9,7 @@ import kasio.view.components.Fonts;
 public class DelButton extends JButton{
     public DelButton() {
         setText("DEL");
-        setFont(Fonts.alphaFont);
+        setFont(Fonts.KEYPAD_PRIMARY);
         setFocusable(false);
         setBackground(Colors.RED);
         setForeground(Colors.WHITE);

@@ -14,6 +14,6 @@ public class AnsButton extends JButton {
         setBackground(Colors.PRIMARY);
         setForeground(Colors.WHITE);
         setBorder(BorderFactory.createLineBorder(Colors.BLACK));
-        this.setFont(Fonts.alphaFont);
+        this.setFont(Fonts.KEYPAD_PRIMARY);
     }
 }

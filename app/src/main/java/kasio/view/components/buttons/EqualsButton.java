@@ -9,7 +9,7 @@ import kasio.view.components.Fonts;
 public class EqualsButton extends JButton {
     public EqualsButton() {
         setText("=");
-        setFont(Fonts.symbolFont);
+        setFont(Fonts.KEYPAD_PRIMARY);
         setFocusable(false);
         setBackground(Colors.GREEN);
         setForeground(Colors.WHITE);

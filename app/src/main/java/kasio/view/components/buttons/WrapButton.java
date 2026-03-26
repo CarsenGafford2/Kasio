@@ -24,7 +24,7 @@ public final class WrapButton extends JButton {
     }
 
     void setUp() {
-        setFont(Fonts.alphaFont);
+        setFont(Fonts.KEYPAD_SECONDARY);
         setFocusable(false);
         setBackground(Colors.PRIMARY);
         setForeground(Colors.WHITE);

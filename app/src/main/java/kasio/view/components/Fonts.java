@@ -7,9 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 public class Fonts {
-    public static Font numFont = new Font("Arial", Font.BOLD, 24);
-    public static Font alphaFont = new Font("Arial", Font.BOLD, 20);
-    public static Font symbolFont = new Font("Ink Free", Font.BOLD, 24);
+    public static final Font KEYPAD_PRIMARY = new Font(Font.SANS_SERIF, Font.BOLD, 24);
+    public static final Font KEYPAD_SECONDARY = new Font(Font.SANS_SERIF, Font.BOLD, 17);
 
     // This will be initialized in the static block below
     public static Font displayFont;
