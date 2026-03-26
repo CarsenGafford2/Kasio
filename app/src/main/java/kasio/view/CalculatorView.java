@@ -158,7 +158,7 @@ public class CalculatorView {
         textField.setBackground(Colors.RETRO);
         textField.setBorder(BorderFactory.createCompoundBorder(
             BorderFactory.createMatteBorder(10, 10, 10, 10, Colors.SECONDARY),
-            BorderFactory.createEmptyBorder(5, 10, 5, 10,) // padding
+            BorderFactory.createEmptyBorder(5, 10, 5, 10) // padding
         ));
         textField.setFont(Fonts.displayFont);
         
