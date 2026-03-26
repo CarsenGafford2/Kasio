@@ -171,19 +171,19 @@ public class CalculatorView {
         scientificPanel.setLayout(new GridLayout(3, 6, 10, 10));
         scientificPanel.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10, Colors.SECONDARY));
 
-        addAppendBtn(scientificPanel, "SIN", Fonts.KEYPAD_SECONDARY);
-        addAppendBtn(scientificPanel, "COS", Fonts.KEYPAD_SECONDARY);
-        addAppendBtn(scientificPanel, "TAN", Fonts.KEYPAD_SECONDARY);
-        addAppendBtn(scientificPanel, "ASIN", Fonts.KEYPAD_SECONDARY);
-        addAppendBtn(scientificPanel, "ACOS", Fonts.KEYPAD_SECONDARY);
-        addAppendBtn(scientificPanel, "ATAN", Fonts.KEYPAD_SECONDARY);
+        addAppendBtn(scientificPanel, "SIN", "SIN(", Fonts.KEYPAD_SECONDARY);
+        addAppendBtn(scientificPanel, "COS", "COS(", Fonts.KEYPAD_SECONDARY);
+        addAppendBtn(scientificPanel, "TAN", "TAN(", Fonts.KEYPAD_SECONDARY);
+        addAppendBtn(scientificPanel, "ASIN", "ASIN(", Fonts.KEYPAD_SECONDARY);
+        addAppendBtn(scientificPanel, "ACOS", "ACOS(", Fonts.KEYPAD_SECONDARY);
+        addAppendBtn(scientificPanel, "ATAN", "ATAN(", Fonts.KEYPAD_SECONDARY);
 
         addAppendBtn(scientificPanel, "x²", "∧2", Fonts.KEYPAD_SECONDARY);
         addAppendBtn(scientificPanel, "xʸ", "∧", Fonts.KEYPAD_SECONDARY);
         addAppendBtn(scientificPanel, "√", Fonts.KEYPAD_SECONDARY);
         addAppendBtn(scientificPanel, "!", Fonts.KEYPAD_SECONDARY);
-        addAppendBtn(scientificPanel, "LOG", Fonts.KEYPAD_SECONDARY);
-        addAppendBtn(scientificPanel, "LN", Fonts.KEYPAD_SECONDARY);
+        addAppendBtn(scientificPanel, "LOG", "LOG(", Fonts.KEYPAD_SECONDARY);
+        addAppendBtn(scientificPanel, "LN", "LN(", Fonts.KEYPAD_SECONDARY);
 
         addWrapBtn(scientificPanel, "1/x", "1/", Fonts.KEYPAD_SECONDARY);
         addWrapBtn(scientificPanel, "(x)", "", Fonts.KEYPAD_SECONDARY);
