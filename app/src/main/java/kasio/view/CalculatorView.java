@@ -21,8 +21,13 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.KeyStroke;
+import javax.swing.text.AbstractDocument;
+import javax.swing.text.AttributeSet;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DocumentFilter;
 import kasio.view.components.Colors;
 import kasio.view.components.Fonts;
+import kasio.view.components.RetroCaret;
 import kasio.view.components.buttons.AllClearButton;
 import kasio.view.components.buttons.AnsButton;
 import kasio.view.components.buttons.AppendButton;
@@ -50,6 +55,8 @@ public class CalculatorView {
   private final DelButton delButton = new DelButton(Fonts.KEYPAD_PRIMARY);
   private final EqualsButton equalsButton = new EqualsButton(Fonts.KEYPAD_PRIMARY);
   private final AnsButton ansButton = new AnsButton(Fonts.KEYPAD_PRIMARY);
+
+  private boolean allowProgrammaticEdit = false;
 
   private void addAppendBtn(JPanel panel, String text, Font font) {
     addAppendBtn(panel, text, text, font);
@@ -157,9 +164,42 @@ public class CalculatorView {
     mode.add(scientificMode);
 
     textField = new JTextField();
-    textField.setHorizontalAlignment(JTextField.RIGHT);
+    textField.setHorizontalAlignment(JTextField.LEFT);
     textField.setBounds(0, 0, contentWidth, textFieldHeight);
-    textField.setEditable(false);
+    ((AbstractDocument) textField.getDocument())
+        .setDocumentFilter(
+            new DocumentFilter() {
+
+              private boolean allowed() {
+                return allowProgrammaticEdit;
+              }
+
+              @Override
+              public void insertString(
+                  FilterBypass fb, int offset, String string, AttributeSet attr)
+                  throws BadLocationException {
+                if (allowed()) {
+                  super.insertString(fb, offset, string, attr);
+                }
+              }
+
+              @Override
+              public void replace(
+                  FilterBypass fb, int offset, int length, String text, AttributeSet attrs)
+                  throws BadLocationException {
+                if (allowed()) {
+                  super.replace(fb, offset, length, text, attrs);
+                }
+              }
+
+              @Override
+              public void remove(FilterBypass fb, int offset, int length)
+                  throws BadLocationException {
+                if (allowed()) {
+                  super.remove(fb, offset, length);
+                }
+              }
+            });
     textField.setBackground(Colors.RETRO);
     textField.setBorder(
         BorderFactory.createCompoundBorder(
@@ -167,6 +207,8 @@ public class CalculatorView {
             BorderFactory.createEmptyBorder(5, 10, 5, 10) // padding
             ));
     textField.setFont(Fonts.displayFont);
+    textField.setCaret(new RetroCaret());
+    textField.requestFocusInWindow();
 
     scientificPanel = new JPanel();
     scientificPanel.setBounds(0, textFieldHeight, contentWidth, scientificPanelHeight);
@@ -235,7 +277,9 @@ public class CalculatorView {
   }
 
   public void setDisplayValue(String value) {
+    this.allowProgrammaticEdit = true;
     this.textField.setText(value);
+    this.allowProgrammaticEdit = false;
   }
 
   public void addAppendButtonListener(Consumer<String> action) {
