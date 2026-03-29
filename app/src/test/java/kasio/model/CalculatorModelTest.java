@@ -1,6 +1,8 @@
 package kasio.model;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -23,6 +25,16 @@ class CalculatorModelTest {
     model.appendInput("2");
 
     assertEquals("1+2", model.getCurrentExpression());
+  }
+
+  @Test
+  void testClear() {
+    model.appendInput("1");
+    model.appendInput("+");
+    model.appendInput("2");
+    model.clear();
+
+    assertEquals("", model.getCurrentExpression());
   }
 
   @Test
@@ -65,6 +77,7 @@ class CalculatorModelTest {
     model.evaluate();
 
     assertEquals("Syntax Error", model.getCurrentExpression());
+    assertTrue(model.isInErrorState());
   }
 
   @Test
@@ -72,11 +85,15 @@ class CalculatorModelTest {
     model.appendInput("+");
     model.appendInput("+");
     model.evaluate();
+
+    // We are now in error state
+    // calling appendInput should remove the error state
     model.clear();
     model.appendInput("1");
     model.appendInput("2");
 
     assertEquals("12", model.getCurrentExpression());
+    assertFalse(model.isInErrorState());
   }
 
   @Test
@@ -91,6 +108,7 @@ class CalculatorModelTest {
     model.appendInput("2");
 
     assertEquals("12", model.getCurrentExpression());
+    assertFalse(model.isInErrorState());
   }
 
   @Test
@@ -102,11 +120,12 @@ class CalculatorModelTest {
     // We are now in error state
     // Calling wrapCurrentExpression should remove the error state
     // but its effect on the expression is ignored
-    model.wrapCurrentExpression(""); // clears error but doesn't affect expression
-    model.wrapCurrentExpression(
-        ""); // we are out of error state so this should have an effect on expression
+    model.wrapCurrentExpression("");
+    // subsequent calls to wrapCurrentExpression are not ignored
+    model.wrapCurrentExpression("");
 
     assertEquals("()", model.getCurrentExpression());
+    assertFalse(model.isInErrorState());
   }
 
   @Test
@@ -151,6 +170,17 @@ class CalculatorModelTest {
     model.evaluate(); // ∧ should be swapped by ^ and we should get the correct result
 
     assertEquals("8", model.getCurrentExpression());
+  }
+
+  @Test
+  void testUppercaseInput() {
+    model.appendInput("TAN");
+    model.appendInput("(");
+    model.appendInput("0");
+    model.appendInput(")");
+    model.evaluate(); // TAN should be swapped by tan and we should get the correct result
+
+    assertEquals("0", model.getCurrentExpression());
   }
 
   @Test
