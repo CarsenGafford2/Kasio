@@ -200,7 +200,7 @@ public class CalculatorView {
                 }
               }
             });
-    textField.setBackground(Colors.RETRO);
+    textField.setBackground(Colors.DISPLAY);
     textField.setBorder(
         BorderFactory.createCompoundBorder(
             BorderFactory.createMatteBorder(10, 10, 10, 10, Colors.SECONDARY),
