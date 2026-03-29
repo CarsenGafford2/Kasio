@@ -13,47 +13,52 @@ public class CalculatorController {
     addListeners();
   }
 
+  private void updateView() {
+    view.setDisplayValue(model.getCurrentExpression());
+    view.setCaretVisibility(!model.isInErrorState());
+  }
+
   private void addListeners() {
     view.addAppendButtonListener(
         (evalText) -> {
           model.appendInput(evalText);
-          view.setDisplayValue(model.getCurrentExpression());
+          updateView();
         });
 
     view.addWrapButtonListener(
         (wrapPrefix) -> {
           model.wrapCurrentExpression(wrapPrefix);
-          view.setDisplayValue(model.getCurrentExpression());
+          updateView();
         });
 
     view.addAllClearButtonListener(
         () -> {
           model.clear();
-          view.setDisplayValue(model.getCurrentExpression());
+          updateView();
         });
 
     view.addDelButtonListener(
         () -> {
           model.deleteLast();
-          view.setDisplayValue(model.getCurrentExpression());
+          updateView();
         });
 
     view.addEqualsButtonListener(
         () -> {
           model.evaluate();
-          view.setDisplayValue(model.getCurrentExpression());
+          updateView();
         });
 
     view.addAnsButtonListener(
         () -> {
           model.appendInput(model.getlastExpressionResult());
-          view.setDisplayValue(model.getCurrentExpression());
+          updateView();
         });
 
     view.addExitButtonListener(
         () -> {
           model.clear();
-          view.setDisplayValue(model.getCurrentExpression());
+          updateView();
           System.exit(0);
         });
   }

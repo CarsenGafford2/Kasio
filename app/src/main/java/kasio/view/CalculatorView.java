@@ -338,4 +338,12 @@ public class CalculatorView {
   public void setVisible(boolean value) {
     frame.setVisible(value);
   }
+
+  public void setCaretVisibility(boolean isVisible) {
+    textField.getCaret().setVisible(isVisible);
+    if (isVisible) {
+      // needed to force it to start blinking again
+      textField.requestFocusInWindow();
+    }
+  }
 }

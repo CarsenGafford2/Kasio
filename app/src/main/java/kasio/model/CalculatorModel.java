@@ -53,6 +53,10 @@ public class CalculatorModel {
     return this.expressionResult;
   }
 
+  public boolean isInErrorState() {
+    return this.inErrorState;
+  }
+
   public void evaluate() {
     if (this.expressionBuilder.isEmpty()) return;
     if (this.inErrorState) return;
