@@ -1,10 +1,15 @@
 package kasio.view;
 
+import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.MenuItem;
+import java.awt.PopupMenu;
+import java.awt.SystemTray;
+import java.awt.TrayIcon;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -39,7 +44,7 @@ public class CalculatorView {
   private JFrame frame;
   private JPanel scientificPanel;
   private JPanel basicPanel;
-  private final JButton off_menu;
+  private MenuItem trayExitItem;
 
   final int contentWidth = 400;
   final int contentHeight = 660;
@@ -76,6 +81,7 @@ public class CalculatorView {
 
   public CalculatorView() {
     frame = new JFrame("Calculator");
+    frame.setType(java.awt.Window.Type.UTILITY);
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     frame.setResizable(false);
     frame.setLayout(null);
@@ -120,23 +126,9 @@ public class CalculatorView {
     minimize.setContentAreaFilled(false);
     minimize.addActionListener(
         e -> {
-          frame.setExtendedState(JFrame.ICONIFIED);
+          frame.setVisible(false);
         });
-
-    off_menu = new JButton("✕");
-    off_menu.setFont(Fonts.KEYPAD_PRIMARY);
-    off_menu.setForeground(Colors.WHITE);
-    off_menu.setBorderPainted(false);
-    off_menu.setFocusable(false);
-    off_menu.setContentAreaFilled(false);
-
-    JPanel eastPanel = new JPanel();
-    eastPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
-    eastPanel.setOpaque(false);
-    eastPanel.add(minimize);
-    eastPanel.add(off_menu);
-
-    menuBar.add(eastPanel, BorderLayout.EAST);
+    menuBar.add(minimize, BorderLayout.EAST);
 
     JMenuItem basicMode = new JMenuItem("Basic");
     basicMode.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_B, KeyEvent.CTRL_DOWN_MASK));
@@ -274,6 +266,60 @@ public class CalculatorView {
     frame.add(basicPanel);
 
     frame.pack();
+
+    java.awt.GraphicsEnvironment ge = java.awt.GraphicsEnvironment.getLocalGraphicsEnvironment();
+    java.awt.Rectangle screenBounds = ge.getMaximumWindowBounds();
+
+    // Calculate the bottom-right corner, with a 10-pixel padding
+    int x = screenBounds.width - frame.getWidth() - 10;
+    int y = screenBounds.height - frame.getHeight() - 10;
+
+    frame.setLocation(x, y);
+
+    // --- SYSTEM TRAY SETUP ---
+    if (SystemTray.isSupported()) {
+      SystemTray tray = SystemTray.getSystemTray();
+      Image image = new ImageIcon(getClass().getResource("/icon/icon.png")).getImage();
+
+      PopupMenu popup = new PopupMenu();
+      trayExitItem = new MenuItem("Exit Kasio");
+      popup.add(trayExitItem);
+
+      TrayIcon trayIcon = new TrayIcon(image, "Kasio Calculator", popup);
+      trayIcon.setImageAutoSize(true);
+
+      trayIcon.addMouseListener(
+          new java.awt.event.MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+              if (e.getButton() == MouseEvent.BUTTON1 && e.getClickCount() == 1) {
+                // TOGGLE VISIBILITY
+                if (frame.isVisible()) {
+                  frame.setVisible(false);
+                } else {
+                  frame.setVisible(true);
+                  frame.setExtendedState(JFrame.NORMAL);
+                  frame.toFront();
+                  frame.requestFocus();
+                }
+              }
+            }
+          });
+
+      try {
+        tray.add(trayIcon);
+      } catch (AWTException e) {
+        System.err.println("TrayIcon could not be added.");
+      }
+    }
+
+    frame.addWindowFocusListener(
+        new java.awt.event.WindowAdapter() {
+          @Override
+          public void windowLostFocus(java.awt.event.WindowEvent e) {
+            frame.setVisible(false);
+          }
+        });
   }
 
   public void setDisplayValue(String value) {
@@ -328,11 +374,10 @@ public class CalculatorView {
         });
   }
 
-  public void addExitButtonListener(Runnable action) {
-    off_menu.addActionListener(
-        e -> {
-          action.run();
-        });
+  public void addTrayExitListener(Runnable action) {
+    if (trayExitItem != null) {
+      trayExitItem.addActionListener(e -> action.run());
+    }
   }
 
   public void setVisible(boolean value) {

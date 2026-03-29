@@ -55,7 +55,7 @@ public class CalculatorController {
           updateView();
         });
 
-    view.addExitButtonListener(
+    view.addTrayExitListener(
         () -> {
           model.clear();
           updateView();
